@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial de Resposta - Site Institucional</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #60a5fa;
+      --primary-dark: #1e40af;
+      --white: #ffffff;
+      --light-gray: #f8fafc;
+      --text: #1e293b;
+      --background: #f9fafb;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --success-color: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 3rem 0 2.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn-responda {
+      background-color: var(--white);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-responda:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .box {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      color: var(--primary-dark);
+      font-size: 1.25rem;
+      margin: 1.5rem 0 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .example-container {
+      background-color: var(--light-gray);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .example-header {
+      background-color: rgba(96, 165, 250, 0.15);
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      font-weight: 500;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .example-content {
+      padding: 1.25rem;
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .response-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .response-label {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .timeline-item {
+      display: flex;
+      margin: 0.5rem 0;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .timeline-year {
+      font-weight: 600;
+      color: var(--primary);
+      min-width: 45px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+      padding-left: 0.5rem;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      height: 0.5rem;
+      width: 0.5rem;
+      background-color: var(--primary-light);
+      border-radius: 50%;
+    }
+
+    .highlight {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .info-box {
+      background-color: rgba(96, 165, 250, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .copy-btn {
+      background-color: var(--primary-light);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary);
+    }
+
+    .copy-btn.success {
+      background-color: var(--success-color);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 0;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-responda {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>📝 Tutorial de Resposta</h1>
+      <p>
+        Olá! 👋 Para organizar melhor as informações no site,
+        pedimos que as respostas sejam enviadas em
+        <strong>texto simples</strong>, seguindo o modelo abaixo.
+      </p>
+
+      <div class="nav-buttons">
+        <a href="./index.html" class="btn-responda">Lista de conteúdos</a>
+        <a href="./formulario-lista.html" class="btn-responda">Responda agora</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="box">
+      <h2>📌 Seção: Sobre o Colégio</h2>
+
+      <p><strong>Itens a serem respondidos:</strong></p>
+      <ul>
+        <li>Fundador</li>
+        <li>História do colégio</li>
+        <li>Linha do tempo da evolução</li>
+      </ul>
+
+      <h3>✅ Exemplo de Resposta</h3>
+
+      <div class="example-container">
+        <div class="example-header">
+          <span>Modelo de resposta</span>
+          <button id="copyButton" class="copy-btn">
+            <span id="copyText">Copiar</span>
+            <span id="copiedText" class="hidden">Copiado!</span>
+          </button>
+        </div>
+        <div class="example-content" id="contentToCopy">
+          <div class="response-item">
+            <span class="response-label">Fundador:</span> Professor João da Silva, educador com mais de 30 anos de experiência, fundou o colégio com a missão de transformar vidas pela educação.
+          </div>
+
+          <div class="response-item">
+            <span class="response-label">História do colégio:</span> O colégio foi fundado em 2005, com apenas 2 turmas de ensino fundamental. Ao longo dos anos, expandiu para incluir todos os segmentos, tornando-se referência na região.
+          </div>
+
+          <div class="response-item">
+            <span class="response-label">Linha do tempo da evolução:</span>
+            <div class="timeline-item">
+              <span class="timeline-year">2005</span>
+              <span>Fundação do colégio</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2010</span>
+              <span>Início do Ensino Médio</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2015</span>
+              <span>Inauguração do novo prédio</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2022</span>
+              <span>Implantação de tecnologia educacional com laboratório de robótica e ClassApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>💡 Dicas:</h3>
+        <ul>
+          <li>Use <strong>título + dois-pontos + resposta</strong></li>
+          <li>Organize em parágrafos ou listas, se necessário</li>
+          <li>Apenas texto — sem imagens ou formatações especiais</li>
+        </ul>
+
+        <p>Se preferir, copie o exemplo acima e edite com suas informações reais 😊</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Função para extrair o texto formatado
+    function extractTextContent(element) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = element.innerHTML;
+
+      // Texto para cópia em formato texto plano simples
+      let plainText = '';
+
+      // Processar os itens de resposta
+      const items = tempDiv.querySelectorAll('.response-item');
+      items.forEach(item => {
+        const label = item.querySelector('.response-label').textContent;
+        let content = item.textContent;
+        content = content.replace(label, '').trim();
+
+        plainText += label + ' ' + content + '\n\n';
+      });
+
+      // Extrair a linha do tempo e formatá-la especialmente
+      const timelineItems = tempDiv.querySelectorAll('.timeline-item');
+      if (timelineItems.length > 0) {
+        // Remover o último "\n\n" adicionado acima
+        plainText = plainText.slice(0, -2);
+
+        timelineItems.forEach(item => {
+          const year = item.querySelector('.timeline-year').textContent;
+          const event = item.textContent.replace(year, '').trim();
+
+          plainText += year + ' - ' + event + '\n';
+        });
+      }
+
+      return plainText.trim();
+    }
+
+    // Configurar o botão de copiar
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyButton = document.getElementById('copyButton');
+      const contentToCopy = document.getElementById('contentToCopy');
+      const copyText = document.getElementById('copyText');
+      const copiedText = document.getElementById('copiedText');
+
+      copyButton.addEventListener('click', function() {
+        // Extrair o texto formatado da div de conteúdo
+        const textToCopy = extractTextContent(contentToCopy);
+
+        // Copiar para a área de transferência
+        navigator.clipboard.writeText(textToCopy).then(function() {
+          // Mostrar feedback visual
+          copyButton.classList.add('success');
+          copyText.classList.add('hidden');
+          copiedText.classList.remove('hidden');
+
+          // Restaurar o estado original após 2 segundos
+          setTimeout(function() {
+            copyButton.classList.remove('success');
+            copyText.classList.remove('hidden');
+            copiedText.classList.add('hidden');
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Erro ao copiar texto: ', err);
+          alert('Não foi possível copiar o texto. Por favor, tente novamente.');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
