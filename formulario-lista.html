@@ -216,38 +216,7 @@
       margin-left: 1rem;
     }
 
-    .form-progress {
-      position: sticky;
-      top: 0;
-      background-color: white;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 6px var(--shadow);
-      margin-bottom: 2rem;
-      z-index: 10;
-    }
-
-    .progress-bar {
-      height: 10px;
-      background-color: var(--border);
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary-light), var(--primary));
-      width: 0;
-      transition: width 0.5s ease;
-    }
-
-    .progress-text {
-      text-align: right;
-      font-size: 0.9rem;
-      color: var(--primary);
-      margin-top: 0.5rem;
-      font-weight: 500;
-    }
+    /* Estilos da barra de progresso removidos */
 
     .form-footer {
       text-align: center;
@@ -257,6 +226,15 @@
       padding: 1rem;
       border-top: 1px solid var(--border);
       margin-top: 3rem;
+    }
+
+    .message {
+      background-color: var(--success);
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      display: none;
     }
 
     @media (max-width: 768px) {
@@ -327,139 +305,137 @@
       </div>
     </header>
 
-    <form action="https://api.sheetmonkey.io/form/jCUvDCkPfD2PdXR96AYPCk" method="post">
+    <form id="conteudoForm" action="https://api.sheetmonkey.io/form/jCUvDCkPfD2PdXR96AYPCk" method="post">
       <!-- Campo de data/hora automático -->
       <input type="hidden" name="Criado em" value="x-sheetmonkey-current-date-time" />
 
-      <div class="form-progress">
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <div class="progress-text"><span id="completedFields">0</span> de 16 campos preenchidos</div>
-      </div>
+    <!-- Barra de progresso removida -->
 
       <!-- Item 1 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="1 - Sobre o Colégio">
+        <input type="hidden" class="item-title" value="1 - Sobre o Colégio">
         <label for="resposta_1"><span class="number">1</span> Sobre o Colégio</label>
-        <textarea id="resposta_1" name="Resposta 1" placeholder="Conte-nos sobre a história, fundação e evolução do colégio..." rows="4"></textarea>
+        <textarea id="resposta_1" class="resposta" data-item="1 - Sobre o Colégio" placeholder="Conte-nos sobre a história, fundação e evolução do colégio..." rows="4"></textarea>
       </div>
 
       <!-- Item 2 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="2 - Destaques do Colégio">
+        <input type="hidden" class="item-title" value="2 - Destaques do Colégio">
         <label for="resposta_2"><span class="number">2</span> Destaques do Colégio</label>
-        <textarea id="resposta_2" name="Resposta 2" placeholder="Quais são os principais destaques, tradição, reconhecimentos..." rows="4"></textarea>
+        <textarea id="resposta_2" class="resposta" data-item="2 - Destaques do Colégio" placeholder="Quais são os principais destaques, tradição, reconhecimentos..." rows="4"></textarea>
       </div>
 
       <!-- Item 3 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="3 - Estatísticas">
+        <input type="hidden" class="item-title" value="3 - Estatísticas">
         <label for="resposta_3"><span class="number">3</span> Estatísticas Relevantes</label>
-        <textarea id="resposta_3" name="Resposta 3" placeholder="Compartilhe números importantes sobre alunos, aprovações, anos de história..." rows="4"></textarea>
+        <textarea id="resposta_3" class="resposta" data-item="3 - Estatísticas Relevantes" placeholder="Compartilhe números importantes sobre alunos, aprovações, anos de história..." rows="4"></textarea>
       </div>
 
       <div class="section-divider">Segmentos Educacionais</div>
 
       <!-- Item 4 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="4 - Segmentos de Ensino">
+        <input type="hidden" class="item-title" value="4 - Segmentos de Ensino">
         <label for="resposta_4"><span class="number">4</span> Segmentos: Infantil, Fund. 1 e 2, Médio</label>
-        <textarea id="resposta_4" name="Resposta 4" placeholder="Descreva os diferentes segmentos de ensino oferecidos pelo colégio..." rows="4"></textarea>
+        <textarea id="resposta_4" class="resposta" data-item="4 - Segmentos de Ensino" placeholder="Descreva os diferentes segmentos de ensino oferecidos pelo colégio..." rows="4"></textarea>
       </div>
 
       <!-- Item 5 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="5 - Diferenciais por Ano">
+        <input type="hidden" class="item-title" value="5 - Diferenciais por Ano">
         <label for="resposta_5"><span class="number">5</span> Diferenciais por Ano/Série</label>
-        <textarea id="resposta_5" name="Resposta 5" placeholder="Quais são as características específicas de cada etapa de ensino..." rows="4"></textarea>
+        <textarea id="resposta_5" class="resposta" data-item="5 - Diferenciais por Ano" placeholder="Quais são as características específicas de cada etapa de ensino..." rows="4"></textarea>
       </div>
 
       <!-- Item 6 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="6 - Metodologia">
+        <input type="hidden" class="item-title" value="6 - Metodologia">
         <label for="resposta_6"><span class="number">6</span> Didática e Metodologia</label>
-        <textarea id="resposta_6" name="Resposta 6" placeholder="Explique sobre a abordagem pedagógica e práticas de ensino..." rows="4"></textarea>
+        <textarea id="resposta_6" class="resposta" data-item="6 - Metodologia" placeholder="Explique sobre a abordagem pedagógica e práticas de ensino..." rows="4"></textarea>
       </div>
 
       <div class="section-divider">Infraestrutura e Valores</div>
 
       <!-- Item 7 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="7 - Estrutura do Colégio">
+        <input type="hidden" class="item-title" value="7 - Estrutura do Colégio">
         <label for="resposta_7"><span class="number">7</span> Estrutura do Colégio</label>
-        <textarea id="resposta_7" name="Resposta 7" placeholder="Descreva os ambientes e instalações do colégio..." rows="4"></textarea>
+        <textarea id="resposta_7" class="resposta" data-item="7 - Estrutura do Colégio" placeholder="Descreva os ambientes e instalações do colégio..." rows="4"></textarea>
       </div>
 
       <!-- Item 8 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="8 - Pilares da Educação">
+        <input type="hidden" class="item-title" value="8 - Pilares da Educação">
         <label for="resposta_8"><span class="number">8</span> Pilares da Educação</label>
-        <textarea id="resposta_8" name="Resposta 8" placeholder="Quais são os valores fundamentais e pilares educacionais..." rows="4"></textarea>
+        <textarea id="resposta_8" class="resposta" data-item="8 - Pilares da Educação" placeholder="Quais são os valores fundamentais e pilares educacionais..." rows="4"></textarea>
       </div>
 
       <!-- Item 9 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="9 - Texto de Contato">
+        <input type="hidden" class="item-title" value="9 - Texto de Contato">
         <label for="resposta_9"><span class="number">9</span> Texto de contato acolhedor</label>
-        <textarea id="resposta_9" name="Resposta 9" placeholder="Escreva uma mensagem acolhedora para contato..." rows="3"></textarea>
+        <textarea id="resposta_9" class="resposta" data-item="9 - Texto de Contato" placeholder="Escreva uma mensagem acolhedora para contato..." rows="3"></textarea>
       </div>
 
       <div class="section-divider">Informações Práticas</div>
 
       <!-- Item 10 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="10 - Lista de Materiais">
+        <input type="hidden" class="item-title" value="10 - Lista de Materiais">
         <label for="resposta_10"><span class="number">10</span> Lista de Materiais</label>
-        <textarea id="resposta_10" name="Resposta 10" placeholder="Informe sobre materiais escolares necessários..." rows="4"></textarea>
+        <textarea id="resposta_10" class="resposta" data-item="10 - Lista de Materiais" placeholder="Informe sobre materiais escolares necessários..." rows="4"></textarea>
       </div>
 
       <!-- Item 11 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="11 - Calendário Escolar">
+        <input type="hidden" class="item-title" value="11 - Calendário Escolar">
         <label for="resposta_11"><span class="number">11</span> Calendário Escolar</label>
-        <textarea id="resposta_11" name="Resposta 11" placeholder="Descreva as datas importantes do calendário escolar..." rows="4"></textarea>
+        <textarea id="resposta_11" class="resposta" data-item="11 - Calendário Escolar" placeholder="Descreva as datas importantes do calendário escolar..." rows="4"></textarea>
       </div>
 
       <!-- Item 12 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="12 - Uniformes">
+        <input type="hidden" class="item-title" value="12 - Uniformes">
         <label for="resposta_12"><span class="number">12</span> Informações sobre Uniformes</label>
-        <textarea id="resposta_12" name="Resposta 12" placeholder="Detalhes sobre os uniformes e regras de uso..." rows="4"></textarea>
+        <textarea id="resposta_12" class="resposta" data-item="12 - Uniformes" placeholder="Detalhes sobre os uniformes e regras de uso..." rows="4"></textarea>
       </div>
 
       <!-- Item 13 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="13 - Cantina">
+        <input type="hidden" class="item-title" value="13 - Cantina">
         <label for="resposta_13"><span class="number">13</span> Informações sobre a Cantina</label>
-        <textarea id="resposta_13" name="Resposta 13" placeholder="Detalhes sobre o funcionamento da cantina e cardápio..." rows="4"></textarea>
+        <textarea id="resposta_13" class="resposta" data-item="13 - Cantina" placeholder="Detalhes sobre o funcionamento da cantina e cardápio..." rows="4"></textarea>
       </div>
 
       <div class="section-divider">Tecnologia e Suporte</div>
 
       <!-- Item 14 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="14 - Aplicativos e Plataformas">
+        <input type="hidden" class="item-title" value="14 - Aplicativos e Plataformas">
         <label for="resposta_14"><span class="number">14</span> App ClassApp e SAS Educação</label>
-        <textarea id="resposta_14" name="Resposta 14" placeholder="Explique sobre as plataformas digitais utilizadas..." rows="4"></textarea>
+        <textarea id="resposta_14" class="resposta" data-item="14 - Aplicativos e Plataformas" placeholder="Explique sobre as plataformas digitais utilizadas..." rows="4"></textarea>
       </div>
 
       <!-- Item 15 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="15 - Tutoriais de Acesso">
+        <input type="hidden" class="item-title" value="15 - Tutoriais de Acesso">
         <label for="resposta_15"><span class="number">15</span> Tutoriais de Acesso</label>
-        <textarea id="resposta_15" name="Resposta 15" placeholder="Informações sobre como acessar portais e plataformas..." rows="4"></textarea>
+        <textarea id="resposta_15" class="resposta" data-item="15 - Tutoriais de Acesso" placeholder="Informações sobre como acessar portais e plataformas..." rows="4"></textarea>
       </div>
 
       <!-- Item 16 -->
       <div class="form-group">
-        <input type="hidden" name="Item" value="16 - Suporte">
+        <input type="hidden" class="item-title" value="16 - Suporte">
         <label for="resposta_16"><span class="number">16</span> Suporte e Contato</label>
-        <textarea id="resposta_16" name="Resposta 16" placeholder="Canais de atendimento e horários de suporte..." rows="4"></textarea>
+        <textarea id="resposta_16" class="resposta" data-item="16 - Suporte" placeholder="Canais de atendimento e horários de suporte..." rows="4"></textarea>
       </div>
 
+      <!-- Campos dinâmicos serão inseridos aqui antes do envio -->
+      <div id="dynamicFields"></div>
+
       <div class="submit-container">
-        <button type="submit">
+        <button type="submit" id="submitBtn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -468,45 +444,56 @@
       </div>
 
       <div class="form-footer">
-        Todas as informações serão usadas para a construção do site institucional.
+        Apenas campos preenchidos serão enviados para a construção do site institucional.
       </div>
     </form>
   </div>
 
   <script>
-    // Script para atualizar a barra de progresso
+    // Script simplificado sem barra de progresso
     const textareas = document.querySelectorAll('textarea');
-    const progressFill = document.getElementById('progressFill');
-    const completedFields = document.getElementById('completedFields');
+    const form = document.getElementById('conteudoForm');
+    const dynamicFields = document.getElementById('dynamicFields');
 
-    function updateProgress() {
-      let filled = 0;
-      textareas.forEach(textarea => {
+    // Função para processar o envio do formulário
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Limpar campos dinâmicos anteriores
+      dynamicFields.innerHTML = '';
+
+      // Criar campos dinâmicos apenas para os campos preenchidos
+      let hasFilledFields = false;
+
+      textareas.forEach((textarea, index) => {
         if (textarea.value.trim().length > 0) {
-          filled++;
+          hasFilledFields = true;
+
+          // Obter o título do item
+          const itemTitle = textarea.getAttribute('data-item');
+
+          // Criar campos dinâmicos
+          const itemField = document.createElement('input');
+          itemField.type = 'hidden';
+          itemField.name = 'Item ' + (index + 1);
+          itemField.value = itemTitle;
+          dynamicFields.appendChild(itemField);
+
+          const respostaField = document.createElement('input');
+          respostaField.type = 'hidden';
+          respostaField.name = 'Resposta ' + (index + 1);
+          respostaField.value = textarea.value;
+          dynamicFields.appendChild(respostaField);
         }
       });
 
-      const percentage = (filled / textareas.length) * 100;
-      progressFill.style.width = percentage + '%';
-      completedFields.textContent = filled;
-
-      // Mudar cor baseado no progresso
-      if (percentage < 30) {
-        progressFill.style.background = 'linear-gradient(90deg, #3b82f6, #2563eb)';
-      } else if (percentage < 70) {
-        progressFill.style.background = 'linear-gradient(90deg, #f59e0b, #d97706)';
+      if (hasFilledFields) {
+        // Enviar o formulário
+        form.submit();
       } else {
-        progressFill.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+        alert('Por favor, preencha pelo menos um campo antes de enviar.');
       }
-    }
-
-    textareas.forEach(textarea => {
-      textarea.addEventListener('input', updateProgress);
     });
-
-    // Inicializar progresso
-    updateProgress();
   </script>
 </body>
 </html>

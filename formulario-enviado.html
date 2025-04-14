@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem Enviada com Sucesso - Colégio</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --primary-bg: #eff6ff;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --success-dark: #059669;
+      --success-light: #d1fae5;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .success-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      background-color: var(--white);
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      text-align: center;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .success-icon {
+      width: 120px;
+      height: 120px;
+      background-color: var(--success-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+
+    .success-icon svg {
+      width: 60px;
+      height: 60px;
+      color: var(--success);
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--success);
+    }
+
+    .message {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .redirect-message {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .redirect-message .count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: var(--primary-bg);
+      color: var(--primary);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .thank-you {
+      margin-top: 2.5rem;
+      font-weight: 500;
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: confetti-fall 3s ease-in-out forwards;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .success-container {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+
+      .success-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .success-icon svg {
+        width: 50px;
+        height: 50px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+
+    <h1>Formulário Enviado com Sucesso!</h1>
+
+    <p class="message">
+      Agradecemos pela sua contribuição. Suas respostas foram recebidas e serão utilizadas para a construção do site institucional do colégio.
+    </p>
+
+    <div class="redirect-message">
+      Você será redirecionado para a página inicial em <span class="count" id="countdown">5</span> segundos
+    </div>
+
+    <p class="thank-you">Obrigado pela sua resposta!</p>
+  </div>
+
+  <script>
+    // Criar efeito de confete para celebração
+    function createConfetti() {
+      const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+      const confettiCount = 100;
+
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+
+        // Posição aleatória
+        const x = Math.random() * window.innerWidth;
+        confetti.style.left = x + 'px';
+
+        // Tamanho aleatório
+        const size = Math.random() * 8 + 5;
+        confetti.style.width = size + 'px';
+        confetti.style.height = size + 'px';
+
+        // Cor aleatória
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.backgroundColor = color;
+
+        // Atraso aleatório
+        const delay = Math.random() * 2;
+        confetti.style.animationDelay = delay + 's';
+
+        // Duração aleatória
+        const duration = Math.random() * 2 + 3;
+        confetti.style.animationDuration = duration + 's';
+
+        document.body.appendChild(confetti);
+
+        // Remover confetes após a animação para evitar acúmulo de elementos DOM
+        setTimeout(() => {
+          confetti.remove();
+        }, duration * 1000 + delay * 1000);
+      }
+    }
+
+    // Contador e redirecionamento
+    function startCountdown() {
+      const countdownElement = document.getElementById('countdown');
+      let seconds = 5;
+
+      // Atualizar o contador a cada segundo
+      const interval = setInterval(() => {
+        seconds--;
+        countdownElement.textContent = seconds;
+
+        // Adicionar animação de pulso ao número
+        countdownElement.style.animation = 'pulse 0.5s ease';
+        setTimeout(() => {
+          countdownElement.style.animation = '';
+        }, 500);
+
+        // Quando o contador chegar a zero, redirecionar
+        if (seconds === 0) {
+          clearInterval(interval);
+          window.location.href = './index.html';
+        }
+      }, 1000);
+    }
+
+    // Iniciar o efeito de confete e o contador quando a página carregar
+    window.addEventListener('load', () => {
+      createConfetti();
+      startCountdown();
+    });
+  </script>
+</body>
+</html>
