@@ -190,6 +190,13 @@
       box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25);
     }
 
+    button[type="submit"]:disabled {
+      background-color: var(--text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
     .section-divider {
       display: flex;
       align-items: center;
@@ -215,8 +222,6 @@
     .section-divider::after {
       margin-left: 1rem;
     }
-
-    /* Estilos da barra de progresso removidos */
 
     .form-footer {
       text-align: center;
@@ -305,11 +310,9 @@
       </div>
     </header>
 
-    <form id="conteudoForm" action="https://api.sheetmonkey.io/form/jCUvDCkPfD2PdXR96AYPCk" method="post">
+    <form id="conteudoForm">
       <!-- Campo de data/hora automático -->
       <input type="hidden" name="Criado em" value="x-sheetmonkey-current-date-time" />
-
-    <!-- Barra de progresso removida -->
 
       <!-- Item 1 -->
       <div class="form-group">
@@ -450,21 +453,38 @@
   </div>
 
   <script>
-    // Script simplificado sem barra de progresso
+    // Script para processar o envio do formulário
     const textareas = document.querySelectorAll('textarea');
     const form = document.getElementById('conteudoForm');
     const dynamicFields = document.getElementById('dynamicFields');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // URL da API SheetMonkey
+    const apiUrl = 'https://api.sheetmonkey.io/form/jCUvDCkPfD2PdXR96AYPCk';
 
     // Função para processar o envio do formulário
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
+      // Desabilitar o botão e mudar o texto
+      const originalButtonText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Enviando...';
+
       // Limpar campos dinâmicos anteriores
       dynamicFields.innerHTML = '';
 
-      // Criar campos dinâmicos apenas para os campos preenchidos
+      // Preparar os dados do formulário para envio
+      let formData = new FormData();
+      let jsonData = {};
+
+      // Adicionar campo de data/hora
+      jsonData['Criado em'] = 'x-sheetmonkey-current-date-time';
+
+      // Verificar se há campos preenchidos
       let hasFilledFields = false;
 
+      // Processar cada textarea
       textareas.forEach((textarea, index) => {
         if (textarea.value.trim().length > 0) {
           hasFilledFields = true;
@@ -472,27 +492,46 @@
           // Obter o título do item
           const itemTitle = textarea.getAttribute('data-item');
 
-          // Criar campos dinâmicos
-          const itemField = document.createElement('input');
-          itemField.type = 'hidden';
-          itemField.name = 'Item ' + (index + 1);
-          itemField.value = itemTitle;
-          dynamicFields.appendChild(itemField);
-
-          const respostaField = document.createElement('input');
-          respostaField.type = 'hidden';
-          respostaField.name = 'Resposta ' + (index + 1);
-          respostaField.value = textarea.value;
-          dynamicFields.appendChild(respostaField);
+          // Adicionar ao JSON para envio
+          jsonData['Item ' + (index + 1)] = itemTitle;
+          jsonData['Resposta ' + (index + 1)] = textarea.value;
         }
       });
 
-      if (hasFilledFields) {
-        // Enviar o formulário
-        form.submit();
-      } else {
+      if (!hasFilledFields) {
         alert('Por favor, preencha pelo menos um campo antes de enviar.');
+        // Restaurar o botão
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalButtonText;
+        return;
       }
+
+      // Enviar dados via fetch API
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+      })
+      .then(response => {
+        if (response.ok) {
+          // Sucesso - redirecionar para a página de sucesso
+          window.location.href = 'success.html';
+        } else {
+          // Erro na API
+          throw new Error('Erro ao enviar o formulário. Status: ' + response.status);
+        }
+      })
+      .catch(error => {
+        // Erro de rede ou outro problema
+        console.error('Erro:', error);
+        alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+
+        // Restaurar o botão
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalButtonText;
+      });
     });
   </script>
 </body>
