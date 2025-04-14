@@ -515,9 +515,9 @@
         body: JSON.stringify(jsonData),
       })
       .then(response => {
-        if (response.ok) {
+        if (response === 200) {
           // Sucesso - redirecionar para a página de sucesso
-          window.location.href = 'success.html';
+          window.location.href = 'https://lista-novo-site.netlify.app/formulario-enviado';
         } else {
           // Erro na API
           throw new Error('Erro ao enviar o formulário. Status: ' + response.status);
