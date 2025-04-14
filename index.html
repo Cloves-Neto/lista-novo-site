@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conteúdo do Site Institucional</title>
+  <style>
+    :root {
+      --primary: rgb(37, 99, 235);
+      --primary-light: rgb(96, 165, 250);
+      --primary-dark: rgb(30, 64, 175);
+      --white: #ffffff;
+      --light-gray: #f8fafc;
+      --text: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--light-gray);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      color: var(--primary-dark);
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      gap: 15px;
+    }
+
+    .card-icon {
+      background-color: rgba(37, 99, 235, 0.1);
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      flex: 1;
+    }
+
+    .card-content ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .card-content li {
+      margin-bottom: 12px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .card-content li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary-light);
+      border-radius: 50%;
+    }
+
+    .category-label {
+      background-color: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 Site Institucional do Colégio</h1>
+      <p class="intro">Conteúdos organizados para uma experiência digital moderna e informativa, refletindo os valores e a excelência da nossa instituição.</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <span class="category-label">Institucional</span>
+        <div class="card-header">
+          <div class="card-icon">🏫</div>
+          <h2 class="card-title">Sobre o Colégio</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Fundador</li>
+            <li>História do colégio</li>
+            <li>Linha do tempo da evolução</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Diferenciais</span>
+        <div class="card-header">
+          <div class="card-icon">✨</div>
+          <h2 class="card-title">Destaques</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Tradição e reconhecimentos</li>
+            <li>Inovação e projetos diferenciados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Números</span>
+        <div class="card-header">
+          <div class="card-icon">📊</div>
+          <h2 class="card-title">Estatísticas</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Números importantes (alunos, aprovações)</li>
+            <li>Anos de história e conquistas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Educação</span>
+        <div class="card-header">
+          <div class="card-icon">🎓</div>
+          <h2 class="card-title">Segmentos de Ensino</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Ensino Infantil</li>
+            <li>Ensino Fundamental 1</li>
+            <li>Ensino Fundamental 2</li>
+            <li>Ensino Médio</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Pedagogia</span>
+        <div class="card-header">
+          <div class="card-icon">🌈</div>
+          <h2 class="card-title">Diferenciais por Etapa</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Características específicas de cada série</li>
+            <li>Recursos educacionais por etapa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Metodologia</span>
+        <div class="card-header">
+          <div class="card-icon">📚</div>
+          <h2 class="card-title">Didática e Ensino</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Abordagem pedagógica</li>
+            <li>Práticas de ensino e aprendizagem</li>
+            <li>Integração com tecnologia</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Infraestrutura</span>
+        <div class="card-header">
+          <div class="card-icon">🏢</div>
+          <h2 class="card-title">Estrutura do Colégio</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Enfermaria e refeitório</li>
+            <li>Laboratórios e salas especiais</li>
+            <li>Espaço de Robótica</li>
+            <li>Quadras e biblioteca</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Valores</span>
+        <div class="card-header">
+          <div class="card-icon">🧭</div>
+          <h2 class="card-title">Pilares da Educação</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Acolhimento, inovação e excelência</li>
+            <li>Diferenciais baseados nos pilares</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Comunicação</span>
+        <div class="card-header">
+          <div class="card-icon">💌</div>
+          <h2 class="card-title">Contato e Acolhimento</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Canais de atendimento</li>
+            <li>Mensagem da equipe do Colégio</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Organização</span>
+        <div class="card-header">
+          <div class="card-icon">📦</div>
+          <h2 class="card-title">Materiais Escolares</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Listas por segmento</li>
+            <li>Orientações para aquisição</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Agenda</span>
+        <div class="card-header">
+          <div class="card-icon">🗓️</div>
+          <h2 class="card-title">Calendário Escolar</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Datas importantes</li>
+            <li>Eventos e avaliações</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Identidade</span>
+        <div class="card-header">
+          <div class="card-icon">👕</div>
+          <h2 class="card-title">Uniformes</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Modelos e regras de uso</li>
+            <li>Locais de compra</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Alimentação</span>
+        <div class="card-header">
+          <div class="card-icon">🥗</div>
+          <h2 class="card-title">Cantina</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Cardápio e funcionamento</li>
+            <li>Programa de alimentação saudável</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Tecnologia</span>
+        <div class="card-header">
+          <div class="card-icon">📲</div>
+          <h2 class="card-title">Aplicativos</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>ClassApp: comunicação e acesso</li>
+            <li>SAS Educação: recursos pedagógicos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Ajuda</span>
+        <div class="card-header">
+          <div class="card-icon">🧑‍💻</div>
+          <h2 class="card-title">Tutoriais de Acesso</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Portal do aluno/responsável</li>
+            <li>Uso do ClassApp e SAS</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="category-label">Atendimento</span>
+        <div class="card-header">
+          <div class="card-icon">🛠️</div>
+          <h2 class="card-title">Suporte e Contato</h2>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Telefones e e-mails</li>
+            <li>Horários de atendimento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
