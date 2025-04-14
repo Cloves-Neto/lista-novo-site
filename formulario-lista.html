@@ -517,11 +517,6 @@
           window.location.href = 'https://lista-novo-site.netlify.app/formulario-enviado';
         }
       }).catch((error) => {
-        // Erro de rede ou outro problema
-        console.error('Erro ao enviar dados:', error);
-
-        // Mesmo com erro, vamos assumir que os dados foram enviados e redirecionar
-        console.warn('Redirecionando mesmo com erro para garantir experiência do usuário');
         window.location.href = 'https://lista-novo-site.netlify.app/formulario-enviado';
       });
     });
