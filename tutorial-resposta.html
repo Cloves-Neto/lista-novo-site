@@ -252,25 +252,24 @@
       display: none;
     }
 
-    /* Accordion/Dropdown styles */
+    /* Estilos para details/summary (antes accordion) */
     .faq-container {
       margin-top: 2rem;
     }
 
-    .accordion {
+    details {
       margin-bottom: 1rem;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--white);
     }
 
-    .accordion-button {
+    summary {
       display: flex;
       justify-content: space-between;
       width: 100%;
-      background-color: var(--white);
-      border: none;
       padding: 1rem 1.5rem;
       text-align: left;
       font-size: 1rem;
@@ -278,34 +277,29 @@
       color: var(--text);
       cursor: pointer;
       transition: background-color 0.2s;
+      position: relative;
+      list-style: none;
     }
 
-    .accordion-button:hover {
-      background-color: var(--light-gray);
+    summary::-webkit-details-marker {
+      display: none;
     }
 
-    .accordion-button::after {
+    summary::after {
       content: "+";
       font-size: 1.5rem;
       color: var(--primary);
     }
 
-    .accordion-button.active::after {
+    details[open] summary::after {
       content: "-";
     }
 
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background-color: var(--white);
+    summary:hover {
+      background-color: var(--light-gray);
     }
 
-    .accordion-content.active {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
+    .details-content {
       padding: 1rem 1.5rem;
       border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
@@ -349,15 +343,15 @@
         <strong>texto simples</strong>, seguindo o modelo abaixo.
       </p>
 
-      <div class="nav-buttons">
+      <nav class="nav-buttons">
         <a href="./index.html" class="btn-responda">Lista de conteúdos</a>
         <a href="./formulario-lista.html" class="btn-responda">Responda agora</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <div class="container">
-    <div class="box">
+  <main class="container">
+    <section class="box">
       <h2>📌 Seção: Sobre o Colégio</h2>
 
       <p><strong>Itens a serem respondidos:</strong></p>
@@ -371,7 +365,7 @@
 
       <div class="examples-container">
         <!-- Exemplo 1: Resposta única -->
-        <div class="example-box">
+        <article class="example-box">
           <h3>Exemplo 1: Respondendo um tópico</h3>
           <div class="example-container">
             <div class="example-header">
@@ -387,10 +381,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Exemplo 2: Resposta completa -->
-        <div class="example-box">
+        <article class="example-box">
           <h3>Exemplo 2: Respondendo todos os tópicos</h3>
           <div class="example-container">
             <div class="example-header">
@@ -429,73 +423,62 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
 
-      <div class="info-box">
+      <aside class="info-box">
         <h3>💡 Dicas:</h3>
         <ul>
           <li>Use <strong>título + dois-pontos + resposta</strong></li>
           <li>Responda apenas os tópicos que são de sua responsabilidade</li>
           <li>Organize em parágrafos quando necessário</li>
-          <li>Para a linha do tempo, use o formato "ANO - evento"</li>
           <li>Envie apenas texto — sem imagens ou formatações especiais</li>
         </ul>
 
         <p>Você pode copiar o exemplo acima e editar com as informações reais 😊</p>
-      </div>
+      </aside>
 
-      <!-- Seção de FAQ com acordeão -->
-      <div class="faq-container">
+      <!-- Seção de FAQ usando details/summary em vez de accordion -->
+      <section class="faq-container">
         <h3>❓ Dúvidas Frequentes</h3>
 
-        <div class="accordion">
-          <button class="accordion-button">Preciso responder todos os itens do card?</button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              Não, você precisa responder apenas os tópicos que são de sua responsabilidade conforme designado. Se você tem conhecimento apenas sobre um dos tópicos, pode enviar somente esse.
-            </div>
+        <details>
+          <summary>Preciso responder todos os itens do card?</summary>
+          <div class="details-content">
+            Não, você precisa responder apenas os tópicos que são de sua responsabilidade conforme designado. Se você tem conhecimento apenas sobre um dos tópicos, pode enviar somente esse.
           </div>
-        </div>
+        </details>
 
-        <div class="accordion">
-          <button class="accordion-button">Posso enviar mais de um formulário?</button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              Sim, você pode responder a diferentes cards em formulários separados. Se precisar corrigir uma informação já enviada, entre em contato conosco por e-mail informando a correção necessária.
-            </div>
+        <details>
+          <summary>Posso enviar mais de um formulário?</summary>
+          <div class="details-content">
+            Sim, você pode responder a diferentes cards em formulários separados. Se precisar corrigir uma informação já enviada, entre em contato conosco por e-mail informando a correção necessária.
           </div>
-        </div>
+        </details>
 
-        <div class="accordion">
-          <button class="accordion-button">Como devo formatar a linha do tempo?</button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              Para a linha do tempo, utilize o formato "ANO - evento" com cada marco em uma linha separada, conforme mostrado no Exemplo 2. Não é necessário utilizar formatações especiais, apenas texto simples.
-            </div>
+        <details>
+          <summary>Como devo formatar a linha do tempo?</summary>
+          <div class="details-content">
+            Para a linha do tempo, utilize o formato "ANO - evento" com cada marco em uma linha separada, conforme mostrado no Exemplo 2. Não é necessário utilizar formatações especiais, apenas texto simples.
           </div>
-        </div>
+        </details>
 
-        <div class="accordion">
-          <button class="accordion-button">Existe um limite de caracteres?</button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              Não há um limite rígido de caracteres, mas recomendamos textos concisos e objetivos. Para o histórico, um parágrafo de 5-7 linhas geralmente é suficiente. Para a linha do tempo, sugerimos incluir apenas os marcos mais importantes.
-            </div>
+        <details>
+          <summary>Existe um limite de caracteres?</summary>
+          <div class="details-content">
+            Não há um limite rígido de caracteres, mas recomendamos textos concisos e objetivos. Para o histórico, um parágrafo de 5-7 linhas geralmente é suficiente. Para a linha do tempo, sugerimos incluir apenas os marcos mais importantes.
           </div>
-        </div>
+        </details>
 
-        <div class="accordion">
-          <button class="accordion-button">Posso usar material institucional existente?</button>
-          <div class="accordion-content">
-            <div class="accordion-content-inner">
-              Sim, você pode utilizar material institucional já existente como base para suas respostas, desde que o texto seja adaptado ao formato solicitado e contenha informações atualizadas.
-            </div>
+        <details>
+          <summary>Posso usar material institucional existente?</summary>
+          <div class="details-content">
+            Sim, você pode utilizar material institucional já existente como base para suas respostas, desde que o texto seja adaptado ao formato solicitado e contenha informações atualizadas.
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </details>
+      </section>
+    </section>
+  </main>
 
   <script>
     // Função para extrair o texto formatado
@@ -567,23 +550,6 @@
             console.error('Erro ao copiar texto: ', err);
             alert('Não foi possível copiar o texto. Por favor, tente novamente.');
           });
-        });
-      });
-
-      // Configurar acordeão de FAQs
-      const accordionButtons = document.querySelectorAll('.accordion-button');
-
-      accordionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          this.classList.toggle('active');
-
-          const content = this.nextElementSibling;
-
-          if (content.classList.contains('active')) {
-            content.classList.remove('active');
-          } else {
-            content.classList.add('active');
-          }
         });
       });
     });
